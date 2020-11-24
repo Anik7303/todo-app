@@ -1,0 +1,10 @@
+# module files
+node_modules/
+
+# visual studio code local configs
+.vscode
+
+# misc
+package-lock.json
+.env*
+debug.log*

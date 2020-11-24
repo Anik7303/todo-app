@@ -1,0 +1,23 @@
+{
+    "name": "todo-app",
+    "version": "0.1.0",
+    "description": "Todo app with Node, MongoDB & React",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "keywords": [
+        "Node",
+        "React",
+        "MongoDB"
+    ],
+    "author": "Anik",
+    "license": "MIT",
+    "dependencies": {
+        "cookie-session": "^1.4.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.10.15",
+        "passport": "^0.4.1",
+        "passport-jwt": "^4.0.0"
+    }
+}
