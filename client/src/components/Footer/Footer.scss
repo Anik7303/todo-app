@@ -1,0 +1,19 @@
+.section-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: blue;
+    color: white;
+}
+
+.author,
+.copyright {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.author {
+    font-weight: 300;
+    font-style: italic;
+}

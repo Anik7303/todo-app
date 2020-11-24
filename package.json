@@ -9,7 +9,7 @@
         "client": "npm run start --prefix client",
         "dev": "run-p server client",
         "build:client": "npm run build --prefix client",
-        "build:copy": "cp ./client/build/* ./public/",
+        "build:copy": "cp -r ./client/build/* ./public/",
         "prod": "run-s build:client build:copy"
     },
     "keywords": [

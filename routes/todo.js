@@ -12,7 +12,7 @@ router.get("/:id", controller.fetchTodo);
 
 router.post("/", controller.createTodo);
 
-router.put("/:id", controller.updateTodo);
+router.patch("/:id", controller.updateTodo);
 
 router.delete("/:id", controller.deleteTodo);
 

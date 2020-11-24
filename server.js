@@ -43,6 +43,12 @@ if (process.env.NODE_ENV !== "production") {
 app.use("/api/todos", todoRoutes);
 app.use("/user", userRoutes);
 
+// app.get("*", (req, res) => res.send(path.resolve(__dirname, "/public/index.html")));
+
+if (process.env.NODE_ENV === "production") {
+    app.get("*", (req, res) => res.send(path.resolve(__dirname, "/public/index.html")));
+}
+
 app.listen(keys.PORT, () => {
     console.log(`listening on port ${keys.PORT}`);
     mongoose

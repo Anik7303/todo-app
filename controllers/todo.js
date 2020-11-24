@@ -61,8 +61,9 @@ exports.updateTodo = async (req, res) => {
             throw new Error(`todo with id ${req.params.id} not found`);
         }
 
-        todo.content = req.body.content;
-        todo.isDone = req.body.isDone;
+        todo.content = req.body.content || todo.content;
+        if (req.body.isDone !== null) todo.isDone = req.body.isDone;
+
         const result = await todo.save();
         if (!result) {
             statusCode = 400;
@@ -87,12 +88,3 @@ exports.deleteTodo = async (req, res) => {
         res.status(statusCode).send({ error: err });
     }
 };
-
-// async (req, res) => {
-//     let statusCode = 500;
-//     try {
-
-//     } catch(err) {
-//         res.status(statusCode).send({error: err});
-//     }
-// }
