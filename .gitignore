@@ -1,6 +1,9 @@
 # module files
 node_modules/
 
+# keys
+config/dev.js
+
 # visual studio code local configs
 .vscode
 

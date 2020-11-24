@@ -4,7 +4,13 @@
     "description": "Todo app with Node, MongoDB & React",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js"
+        "start": "node server.js",
+        "server": "nodemon server.js",
+        "client": "npm run start --prefix client",
+        "dev": "run-p server client",
+        "build:client": "npm run build --prefix client",
+        "build:copy": "cp ./client/build/* ./public/",
+        "prod": "run-s build:client build:copy"
     },
     "keywords": [
         "Node",
@@ -14,10 +20,16 @@
     "author": "Anik",
     "license": "MIT",
     "dependencies": {
+        "body-parser": "^1.19.0",
         "cookie-session": "^1.4.0",
         "express": "^4.17.1",
         "mongoose": "^5.10.15",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0"
+    },
+    "devDependencies": {
+        "cors": "^2.8.5",
+        "nodemon": "^2.0.6",
+        "npm-run-all": "^4.1.5"
     }
 }
