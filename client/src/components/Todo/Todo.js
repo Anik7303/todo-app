@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import "./Todo.scss";
 import { fetchTodos, updateStatus } from "../../actions";
+import TodoForm from "./TodoForm/TodoForm";
 
 const Todo = (props) => {
     const { todos, fetchTodos, updateStatus } = props;
@@ -14,16 +15,19 @@ const Todo = (props) => {
 
     const renderList = () =>
         todos.map(({ _id, content, isDone }) => (
-            <li
-                key={_id}
-                className={isDone ? "todo-item completed" : "todo-item"}
-                onClick={() => updateStatus(_id, isDone)}
-            >
-                {content}
+            <li key={_id} className={"todo-item"} onClick={() => updateStatus(_id, isDone)}>
+                <div className={isDone ? "todo-content completed" : "todo-content"}>{content}</div>
             </li>
         ));
 
-    return <ul className="todo-list">{renderList()}</ul>;
+    return (
+        <section className="section-todo">
+            <ul className="todo-list">{renderList()}</ul>
+            <div className="todo-inputs">
+                <TodoForm />
+            </div>
+        </section>
+    );
 };
 
 const mapStateToProps = (state) => ({ todos: state.todos });
