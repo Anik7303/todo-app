@@ -3,33 +3,37 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 
 import "./Todo.scss";
-import { fetchTodos, updateStatus } from "../../actions";
+import TodoItem from "./TodoItem/TodoItem";
 import TodoForm from "./TodoForm/TodoForm";
+import { fetchTodos, updateStatus, deleteTodo } from "../../actions";
 
 const Todo = (props) => {
-    const { todos, fetchTodos, updateStatus } = props;
+    const { todos, fetchTodos, updateStatus, deleteTodo } = props;
 
     useEffect(() => {
         fetchTodos();
     }, [fetchTodos]);
 
     const renderList = () =>
-        todos.map(({ _id, content, isDone }) => (
-            <li key={_id} className={"todo-item"} onClick={() => updateStatus(_id, isDone)}>
-                <div className={isDone ? "todo-content completed" : "todo-content"}>{content}</div>
-            </li>
+        todos.map((todo) => (
+            <TodoItem
+                key={todo._id}
+                todo={todo}
+                onStateChange={updateStatus}
+                onDelete={deleteTodo}
+            />
         ));
 
     return (
         <section className="section-todo">
-            <ul className="todo-list">{renderList()}</ul>
             <div className="todo-inputs">
                 <TodoForm />
             </div>
+            <ul className="todo-list">{renderList()}</ul>
         </section>
     );
 };
 
 const mapStateToProps = (state) => ({ todos: state.todos });
 
-export default connect(mapStateToProps, { fetchTodos, updateStatus })(Todo);
+export default connect(mapStateToProps, { fetchTodos, updateStatus, deleteTodo })(Todo);

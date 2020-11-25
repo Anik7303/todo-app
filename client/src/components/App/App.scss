@@ -51,8 +51,6 @@
     background-color: inherit;
     padding: 0.5rem 1rem;
     border: none;
-    transform: translateX(-100%);
-    transition: all 0.2s ease;
     cursor: pointer;
 
     &:focus {
@@ -62,12 +60,22 @@
 
     &:hover {
         box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.1);
-        transform: scale(1.01) translateY(-2px) translateX(-100%);
     }
 
     &:active {
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        transform: scale(1) translateY(-1px) translateX(-100%);
+    }
+
+    &--animated {
+        transition: all 0.2s ease;
+
+        &:hover {
+            transform: scale(1.01) translateY(-2px);
+        }
+
+        &:active {
+            transform: scale(1) translateY(-1px);
+        }
     }
 }
 

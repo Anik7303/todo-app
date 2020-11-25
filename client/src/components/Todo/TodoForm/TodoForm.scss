@@ -6,15 +6,36 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
-    }
-
-    &__label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        position: relative;
     }
 
     &__input {
         flex: 1;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        border: 1px solid rgb(63, 216, 243);
+        padding: 0.5rem 1rem;
+        outline: none;
+    }
+
+    &__btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.5rem 2rem;
+        background-color: rgb(63, 216, 243);
+        border-left: 1px solid rgb(63, 216, 243);
+        height: 100%;
+
+        &:hover {
+            box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.1);
+            background-color: rgb(63, 243, 228);
+        }
+
+        &:active {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
     }
 }
