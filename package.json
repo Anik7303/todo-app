@@ -3,6 +3,10 @@
     "version": "0.1.0",
     "description": "Todo app with Node, MongoDB & React",
     "main": "server.js",
+    "engines": {
+        "npm": "6.14.8",
+        "node": "14.15.0"
+    },
     "scripts": {
         "start": "node server.js",
         "server": "nodemon server.js",
