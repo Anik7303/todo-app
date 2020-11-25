@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const cookieSession = require("cookie-session");
+// const cookieSession = require("cookie-session");
 const mongoose = require("mongoose");
 
 // load database models
@@ -32,25 +32,23 @@ app.use(bodyParser.json());
 
 // use cookie-session to setup req.cookies
 // maxAge set to 1hr
-app.use(cookieSession({ keys: [keys.COOKIE_SECRET], maxAge: 60 * 60 * 1000 }));
+// app.use(cookieSession({ keys: [keys.COOKIE_SECRET], maxAge: 60 * 60 * 1000 }));
 
 // cross-origin support
-if (process.env.NODE_ENV !== "production") {
-    const cors = require("cors");
-    app.use(cors());
-}
+// if (process.env.NODE_ENV !== "production") {
+//     const cors = require("cors");
+//     app.use(cors());
+// }
 
 app.use("/api/todos", todoRoutes);
 app.use("/user", userRoutes);
-
-// app.get("*", (req, res) => res.send(path.resolve(__dirname, "/public/index.html")));
 
 if (process.env.NODE_ENV === "production") {
     app.get("*", (req, res) => res.send(path.resolve(__dirname, "/public/index.html")));
 }
 
 app.listen(keys.PORT, () => {
-    console.log(`listening on port ${keys.PORT}`);
+    // console.log(`listening on port ${keys.PORT}`);
     mongoose
         .connect(keys.MONGO_URI, mongoConfigs)
         .catch((err) => console.log(`error occured while connecting to mongodb -> ${err}`));
